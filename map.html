@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoPark - Карта</title>
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/index.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="header">
+            <div class="header-left">
+                <a href="index.html" class="btn-back" style="margin-right: 8px;">
+                    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                </a>
+                <div class="view-title">Карта</div>
+            </div>
+        </div>
+        <div class="content">
+            <!-- Карта отображается по умолчанию на этой странице -->
+            <div class="map-container visible" id="mapContainer">
+                <div class="map-wrapper" id="mapWrapper">
+                    <!-- Примечание: Если у вас есть фото карты, замените весь блок <svg>...</svg> на: -->
+                    <!-- <img src="map.jpg" alt="Карта" style="width: 100%; height: 100%; object-fit: cover;"> -->
+                    <svg id="mapSvg" viewBox="0 0 360 480" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="360" height="480" fill="var(--map-bg)"/>
+                        <rect x="0" y="200" width="360" height="80" fill="var(--map-road)"/>
+                        <rect x="140" y="0" width="80" height="480" fill="var(--map-road)"/>
+                        <line x1="0" y1="240" x2="140" y2="240" stroke="var(--map-line)" stroke-width="2" stroke-dasharray="12,8"/>
+                        <line x1="220" y1="240" x2="360" y2="240" stroke="var(--map-line)" stroke-width="2" stroke-dasharray="12,8"/>
+                        <line x1="180" y1="0" x2="180" y2="200" stroke="var(--map-line)" stroke-width="2" stroke-dasharray="12,8"/>
+                        <line x1="180" y1="280" x2="180" y2="480" stroke="var(--map-line)" stroke-width="2" stroke-dasharray="12,8"/>
+                        <rect x="10" y="10" width="120" height="80" rx="4" fill="var(--map-building-1)"/>
+                        <rect x="10" y="100" width="50" height="90" rx="4" fill="var(--map-building-2)"/>
+                        <rect x="70" y="100" width="60" height="90" rx="4" fill="var(--map-building-3)"/>
+                        <rect x="230" y="10" width="120" height="100" rx="4" fill="var(--map-building-1)"/>
+                        <rect x="230" y="120" width="60" height="70" rx="4" fill="var(--map-building-2)"/>
+                        <rect x="300" y="120" width="50" height="70" rx="4" fill="var(--map-building-3)"/>
+                        <rect x="10" y="290" width="120" height="80" rx="4" fill="var(--map-building-1)"/>
+                        <rect x="10" y="380" width="80" height="90" rx="4" fill="var(--map-building-2)"/>
+                        <rect x="100" y="380" width="30" height="90" rx="4" fill="var(--map-building-3)"/>
+                        <rect x="230" y="290" width="120" height="90" rx="4" fill="var(--map-building-1)"/>
+                        <rect x="230" y="390" width="50" height="80" rx="4" fill="var(--map-building-2)"/>
+                        <rect x="290" y="390" width="60" height="80" rx="4" fill="var(--map-building-3)"/>
+                        <rect x="15" y="155" width="22" height="35" rx="2" fill="#22c55e" opacity="0.8"/>
+                        <rect x="42" y="155" width="22" height="35" rx="2" fill="#22c55e" opacity="0.8"/>
+                        <rect x="235" y="155" width="22" height="35" rx="2" fill="#22c55e" opacity="0.8"/>
+                        <rect x="262" y="155" width="22" height="35" rx="2" fill="#ef4444" opacity="0.8"/>
+                        <rect x="289" y="155" width="22" height="35" rx="2" fill="#ef4444" opacity="0.8"/>
+                        <rect x="316" y="155" width="22" height="35" rx="2" fill="#22c55e" opacity="0.8"/>
+                        <rect x="15" y="310" width="22" height="35" rx="2" fill="#ef4444" opacity="0.8"/>
+                        <rect x="42" y="310" width="22" height="35" rx="2" fill="#ef4444" opacity="0.8"/>
+                        <rect x="69" y="310" width="22" height="35" rx="2" fill="#22c55e" opacity="0.8"/>
+                        <rect x="96" y="310" width="22" height="35" rx="2" fill="#ef4444" opacity="0.8"/>
+                        <rect x="235" y="310" width="22" height="35" rx="2" fill="#22c55e" opacity="0.8"/>
+                        <rect x="262" y="310" width="22" height="35" rx="2" fill="#ef4444" opacity="0.8"/>
+                        <rect x="289" y="310" width="22" height="35" rx="2" fill="#22c55e" opacity="0.8"/>
+                        <rect x="316" y="310" width="22" height="35" rx="2" fill="#22c55e" opacity="0.8"/>
+                        <rect x="320" y="210" width="30" height="18" rx="2" fill="#22c55e" opacity="0.8"/>
+                        <rect x="320" y="252" width="30" height="18" rx="2" fill="#ef4444" opacity="0.8"/>
+                        <rect x="10" y="210" width="30" height="18" rx="2" fill="#ef4444" opacity="0.8"/>
+                        <rect x="10" y="252" width="30" height="18" rx="2" fill="#22c55e" opacity="0.8"/>
+                        <rect class="nearest-highlight" x="40" y="153" width="26" height="39" rx="3" fill="none" stroke="#fbbf24" stroke-width="2.5"/>
+                        <g class="arrow-indicator">
+                            <line x1="100" y1="210" x2="60" y2="175" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+                            <polygon points="58,172 66,172 60,164" fill="#fbbf24"/>
+                            <text x="105" y="218" fill="#fbbf24" font-size="10" font-weight="600" font-family="Inter">~40м</text>
+                        </g>
+                        <g class="car-group">
+                            <rect x="165" y="225" width="30" height="50" rx="6" fill="#3b82f6"/>
+                            <rect x="169" y="230" width="22" height="12" rx="3" fill="#60a5fa" opacity="0.6"/>
+                            <rect x="169" y="258" width="22" height="10" rx="3" fill="#60a5fa" opacity="0.6"/>
+                            <rect x="163" y="232" width="4" height="10" rx="2" fill="#1e3a5f"/>
+                            <rect x="193" y="232" width="4" height="10" rx="2" fill="#1e3a5f"/>
+                            <rect x="163" y="258" width="4" height="10" rx="2" fill="#1e3a5f"/>
+                            <rect x="193" y="258" width="4" height="10" rx="2" fill="#1e3a5f"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="map-info" id="mapInfo">
+                    <div class="map-info-title" id="mapInfoTitle">Текущее местоположение</div>
+                    <div class="map-info-sub" id="mapInfoSub">Зона: 500 м</div>
+                </div>
+                <div class="map-controls" id="mapControls">
+                    <button class="map-ctrl-btn" onclick="zoomIn()">+</button>
+                    <button class="map-ctrl-btn" onclick="zoomOut()">−</button>
+                    <button class="map-ctrl-btn" onclick="resetMap()" style="font-size:14px">⟲</button>
+                </div>
+                <div class="legend" id="legend">
+                    <div class="legend-item"><div class="legend-color" style="background:#22c55e"></div><span data-i18n="free">Свободно</span></div>
+                    <div class="legend-item"><div class="legend-color" style="background:#ef4444"></div><span data-i18n="occupied">Занято</span></div>
+                    <div class="legend-item"><div class="legend-color" style="background:#3b82f6"></div><span data-i18n="yourCar">Ваш авто</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>
